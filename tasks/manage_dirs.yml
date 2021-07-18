@@ -1,0 +1,13 @@
+- name: Create certificate directory
+  file:
+    state: directory
+    path: "{{ cert_manager_cert_dir }}"
+    mode: 0755
+  become: true
+
+- name: Create state directory
+  file:
+    state: directory
+    path: "{{ cert_manager_state_dir }}"
+    mode: 0755
+  become: true

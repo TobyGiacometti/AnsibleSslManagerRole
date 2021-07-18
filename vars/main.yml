@@ -1,0 +1,5 @@
+cert_manager_user: cert-manager
+cert_manager_client_dir: /home/{{ cert_manager_user }}/.acme.sh
+cert_manager_client_version: 2.8.8
+cert_manager_cert_dir: /etc/certs
+cert_manager_state_dir: /var/lib/cert-manager

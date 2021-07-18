@@ -1,0 +1,14 @@
+- name: Verify all hosts
+  hosts: all
+  vars_files:
+    - ../../vars/main.yml
+  tasks:
+    - name: Retrieve state of ACME client run
+      command: cat /tmp/acme.sh.log
+      register: client_log_cat_result
+
+    - name: Run tests
+      assert:
+        that:
+          - client_log_cat_result.stdout is not search('--revoke --domain domain.test$', multiline=True)
+          - client_log_cat_result.stdout is search('--log --issue --dns dns_test --domain domain.test --domain sub.domain.test$', multiline=True)
